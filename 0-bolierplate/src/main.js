@@ -1,4 +1,4 @@
-import * as Three from "three";
+import * as THREE from "three";
 
 function init() {}
 
