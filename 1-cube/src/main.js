@@ -1,5 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import GUI from "lil-gui";
 
 function init() {
   const renderer = new THREE.WebGLRenderer({
@@ -122,6 +123,17 @@ function init() {
 
   render();
   window.addEventListener("resize", handleResize);
+
+  const gui = new GUI();
+  const options = {
+    color: "0x00ffff",
+  };
+  // gui.add(cube.position, "y", -3, 3, 0.1);
+  gui.add(cube.position, "y").min(-3).max(3).step(0.1); // chainning 형식
+  gui.add(cube, "visible");
+  gui.addColor(options, "color").onChange((v) => {
+    cube.material.color.set(v);
+  });
 }
 
 window.addEventListener("load", () => {
